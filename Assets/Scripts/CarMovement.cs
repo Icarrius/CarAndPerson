@@ -2,17 +2,26 @@ using UnityEngine;
 
 public class CarMovement : MonoBehaviour
 {
-    public bool isActive = false;
+ 
+        public bool isActive = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        public float speed = 2f;
+
+        private Rigidbody2D rb;
+
+     
+        void Start()
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+
+        void Update()
+        {
+            float x = Input.GetAxis("Horizontal");
+
+            if (isActive)
+            {
+               rb.velocity = new Vector2(x * speed, rb.velocity.y);
+            }
+        }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-}
